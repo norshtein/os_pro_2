@@ -9,3 +9,9 @@ job5 alloc 140
 job6 alloc 60
 job7 alloc 50
 job6 free 60
+job1 alloc 130
+job1 free 130
+job1 alloc 130
+job1 free 130
+job1 alloc 130
+job1 free 130

@@ -36,6 +36,7 @@
             this.submit_button = new System.Windows.Forms.Button();
             this.algorithm_choose_label = new System.Windows.Forms.Label();
             this.instruction_displayer = new System.Windows.Forms.RichTextBox();
+            this.reset_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // memory_panel
@@ -53,7 +54,7 @@
             this.algorithm_choose_box.Items.AddRange(new object[] {
             "首次适应算法",
             "最佳适应算法"});
-            this.algorithm_choose_box.Location = new System.Drawing.Point(478, 130);
+            this.algorithm_choose_box.Location = new System.Drawing.Point(478, 115);
             this.algorithm_choose_box.Name = "algorithm_choose_box";
             this.algorithm_choose_box.Size = new System.Drawing.Size(121, 20);
             this.algorithm_choose_box.TabIndex = 1;
@@ -62,7 +63,7 @@
             // 
             // next_step_button
             // 
-            this.next_step_button.Location = new System.Drawing.Point(498, 156);
+            this.next_step_button.Location = new System.Drawing.Point(498, 141);
             this.next_step_button.Name = "next_step_button";
             this.next_step_button.Size = new System.Drawing.Size(75, 23);
             this.next_step_button.TabIndex = 2;
@@ -73,7 +74,7 @@
             // input_size_label
             // 
             this.input_size_label.AutoSize = true;
-            this.input_size_label.Location = new System.Drawing.Point(445, 47);
+            this.input_size_label.Location = new System.Drawing.Point(445, 32);
             this.input_size_label.Name = "input_size_label";
             this.input_size_label.Size = new System.Drawing.Size(191, 12);
             this.input_size_label.TabIndex = 3;
@@ -81,7 +82,7 @@
             // 
             // memory_text
             // 
-            this.memory_text.Location = new System.Drawing.Point(488, 62);
+            this.memory_text.Location = new System.Drawing.Point(488, 47);
             this.memory_text.Name = "memory_text";
             this.memory_text.Size = new System.Drawing.Size(100, 21);
             this.memory_text.TabIndex = 4;
@@ -89,7 +90,7 @@
             // 
             // submit_button
             // 
-            this.submit_button.Location = new System.Drawing.Point(498, 89);
+            this.submit_button.Location = new System.Drawing.Point(498, 74);
             this.submit_button.Name = "submit_button";
             this.submit_button.Size = new System.Drawing.Size(75, 23);
             this.submit_button.TabIndex = 5;
@@ -100,7 +101,7 @@
             // algorithm_choose_label
             // 
             this.algorithm_choose_label.AutoSize = true;
-            this.algorithm_choose_label.Location = new System.Drawing.Point(462, 115);
+            this.algorithm_choose_label.Location = new System.Drawing.Point(462, 100);
             this.algorithm_choose_label.Name = "algorithm_choose_label";
             this.algorithm_choose_label.Size = new System.Drawing.Size(161, 12);
             this.algorithm_choose_label.TabIndex = 6;
@@ -114,11 +115,22 @@
             this.instruction_displayer.TabIndex = 7;
             this.instruction_displayer.Text = "";
             // 
+            // reset_button
+            // 
+            this.reset_button.Location = new System.Drawing.Point(498, 170);
+            this.reset_button.Name = "reset_button";
+            this.reset_button.Size = new System.Drawing.Size(75, 23);
+            this.reset_button.TabIndex = 8;
+            this.reset_button.Text = "reset";
+            this.reset_button.UseVisualStyleBackColor = true;
+            this.reset_button.Click += new System.EventHandler(this.reset_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(657, 467);
+            this.Controls.Add(this.reset_button);
             this.Controls.Add(this.instruction_displayer);
             this.Controls.Add(this.algorithm_choose_label);
             this.Controls.Add(this.submit_button);
@@ -144,6 +156,7 @@
         private System.Windows.Forms.Button submit_button;
         private System.Windows.Forms.Label algorithm_choose_label;
         private System.Windows.Forms.RichTextBox instruction_displayer;
+        private System.Windows.Forms.Button reset_button;
     }
 }
 

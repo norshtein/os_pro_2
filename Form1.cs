@@ -180,37 +180,19 @@ namespace osproject
                     instruction_displayer.Text += s + " [failed]" + '\n';
                     return;
                 }
-
-                int freeindex = -1;
-                for(int i = 0;i < freespace.Count;i++)
-                {
-                    if(((SpaceNode)usedspace[usedindex]).begin == ((SpaceNode)freespace[i]).end + 1 ||
-                        ((SpaceNode)usedspace[usedindex]).end + 1 == ((SpaceNode)freespace[i]).begin)
-                    {
-                        freeindex = i;
-                        break;
-                    }
-                }
-
-                if(freeindex == -1)
+                if(((SpaceNode)usedspace[usedindex]).capacity == size)
                 {
                     freespace.Add(new SpaceNode(((SpaceNode)usedspace[usedindex]).begin,
-                        ((SpaceNode)usedspace[usedindex]).end, ((SpaceNode)usedspace[usedindex]).capacity));
+                    ((SpaceNode)usedspace[usedindex]).end, ((SpaceNode)usedspace[usedindex]).capacity));
+                    usedspace.RemoveAt(usedindex);
                 }
                 else
                 {
-                    if(((SpaceNode)usedspace[usedindex]).begin == ((SpaceNode)freespace[freeindex]).end + 1)
-                    {
-                        ((SpaceNode)freespace[freeindex]).end = ((SpaceNode)usedspace[usedindex]).end;
-                        ((SpaceNode)freespace[freeindex]).capacity += ((SpaceNode)usedspace[usedindex]).capacity;
-                    }
-                    else if(((SpaceNode)usedspace[usedindex]).end + 1 == ((SpaceNode)freespace[freeindex]).begin)
-                    {
-                        ((SpaceNode)freespace[freeindex]).begin = ((SpaceNode)usedspace[usedindex]).begin;
-                        ((SpaceNode)freespace[freeindex]).capacity += ((SpaceNode)usedspace[usedindex]).capacity;
-                    }
+                    freespace.Add(new SpaceNode(((SpaceNode)usedspace[usedindex]).begin,
+                        ((SpaceNode)usedspace[usedindex]).begin + size - 1, size));
+                    ((SpaceNode)usedspace[usedindex]).begin += size;
+                    ((SpaceNode)usedspace[usedindex]).capacity -= size;
                 }
-                usedspace.RemoveAt(usedindex);
                 freespace.Sort(new SortWithBeginTime());
                 for(int i = 1;i < freespace.Count;i++)
                 {
@@ -253,6 +235,19 @@ namespace osproject
             usedspace.Clear();
             freespace.Add(new SpaceNode(1, memory_size, memory_size));
             memory_panel.CreateGraphics().Clear(Color.FromArgb(255,255,255,255));
+            repaintPanel();
+        }
+
+        private void reset_button_Click(object sender, EventArgs e)
+        {
+            started = false;
+            freespace.Clear();
+            usedspace.Clear();
+            freespace.Add(new SpaceNode(1, memory_size, memory_size));
+            instruction_displayer.Text = "";
+            instruction.Close();
+            instruction = new StreamReader("instruction.txt");
+            memory_panel.CreateGraphics().Clear(Color.FromArgb(255, 255, 255, 255));
             repaintPanel();
         }
     }
